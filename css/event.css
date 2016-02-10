@@ -1,0 +1,48 @@
+*{
+  margin:0;
+  padding:0;
+}
+body{
+  font-family:arial,sans-serif;
+  font-size:100%;
+  margin:3em;
+  background:white;
+  color:#ffc;
+}
+ul li a {
+font-size: 14px;
+}
+
+p {
+font-size: 16px;
+color: #000;
+}
+.csswrap h2,p{
+  font-size:100%;
+  font-weight:normal;
+}
+
+.csswrap ul,li{
+  list-style:none;
+}
+.csswrap ul{
+  overflow:hidden;
+  padding:3em;
+}
+.csswrap ul li a{
+  font-family: cursive;
+  font-size: 12px;
+  text-decoration:none;
+  color:#000;
+  background:#F9D448;
+  display:block;
+  height:20em;
+  width:20em;
+  padding:2em;
+  
+}
+.csswrap ul li{
+  margin:1em;
+  float:left;
+}
+
