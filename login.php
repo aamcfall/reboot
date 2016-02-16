@@ -1,12 +1,26 @@
 <?php
 
-//Shows the error in the code you are wrtting 
+$host = localhost;
+$username = root;
+$pass = root;
+$database = HackU;
+
+$conn = mysqli_connect($host, $username, $pass, $database);
+
+if ($conn->connect_errno) {
+  echo "Failed to connect to MySQL: (" . $conn->connect_errno . ") " . $conn->connect_error;
+  }
+ 
+
+
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
+
+
 //allows code to connect to database 
-include("include/db.php"); 
+/*include("include/db.php");*/ 
 
     //Begins a session 
 	session_start();
@@ -28,12 +42,11 @@ include("include/db.php");
   			$users = $_POST['email-user'];
             
             //Checks against the database 
-  			$sql = "SELECT * FROM user_hacku WHERE (Username='$users' or Email='$users') and Password='$hashpass'";
+  			$sql = "SELECT * FROM user_hacku WHERE (Email='$users_email') AND Password='$users_password'";
   			$result = mysqli_query($conn,$sql);
-      		$count = $result->num_rows;
-             
-             //If exist stores user variable from the database 
-      		if($count == 1) {
+  			
+  			if ($result) {
+      		
          		//session_register("users");
          		$_SESSION['user'] = $result->fetch_assoc();
          		
@@ -44,8 +57,8 @@ include("include/db.php");
   		else{
   			echo "You login name or password is invalid";
   		}
-  	  	
+  	  	}
   	}
-  	}
+  	
   }
 ?>

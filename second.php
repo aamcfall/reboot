@@ -4,7 +4,12 @@
     <meta charset="utf-8">
     <title>Basic Bootstrap Template</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <?php include("include/header.php"); ?>
+    <!--<?php include("include/header.php"); ?>-->
+        <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
+<link href="css/bootstrap-theme.css" rel="stylesheet" type="text/css">
+<link href="css/custom.css" rel="stylesheet" type="text/css">
+<link href="css/style.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="bower_components/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css" />
     <style>
       .modal-open .modal,.btn:focus{
       outline:none!important;
@@ -12,9 +17,23 @@
       .jumbotron h1 {font-size: 78px; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;}
       .jumbotron p { font-size: 32px; }
       }
-      
-      
-     </style>       
+     </style>  
+     <?php
+
+
+$host = getenv('localhost');
+$username = getenv('root');
+$pass = getenv('root');
+$database = getenv('HackU');
+
+$conn = new mysqli($host, $username, $pass, $database);
+
+if ($conn->connect_errno) {
+  echo "Failed to connect to MySQL: (" . $conn->connect_errno . ") " . $conn->connect_error;
+  }
+ 
+?>
+     
 </head>
 <body id="bootstrap-overrides">
 	

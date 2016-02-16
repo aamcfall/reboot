@@ -1,34 +1,25 @@
 <?php
-/*
-  	$server = "localhost";
-	$db_username = "root";
-	$db_password = "root";
-	$database = "HackU";
+//NEW
 
+$host = localhost;
+$username = root;
+$pass = root;
+$database = HackU;
 
-	// Create connection
-	$conn = mysqli_connect($server, $db_username, $db_password, $database);
-	if (!$conn) {
-		die("Connection failed: " . mysqli_connect_error());
-	}
+$conn = mysqli_connect($host, $username, $pass, $database);
 
-	// Check connection
-	if ($conn->connect_error) {
-    	die("Connection failed: " . $conn->connect_error);
-	} 
-	echo "Connected successfully";
-	//print_r($_POST);
+if ($conn->connect_errno) {
+  echo "Failed to connect to MySQL: (" . $conn->connect_errno . ") " . $conn->connect_error;
+  }
+ 
 
-*/
 
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
-include("include/db.php"); 
 
-
-
+/*include("include/db.php"); */
 
 
 	$users_fname = $_POST['first-name'];
@@ -45,33 +36,30 @@ include("include/db.php");
 			Echo "please fill the empty field.";
   		}
   	else {
-        $select = "SELECT Email FROM user_hacku WHERE Email='$users_email'";
-        //$stmt = $conn->prepare($select);
-        //$stmt->bind_param('s', $users_email);
-        //$result = $stmt->execute() or trigger_error($stmt->error.". Query: ".$query);
-        //$count = $result->num_rows;
-        
-        $result = mysqli_query($conn,$select);
-        
-        $count = $result->num_rows;
-        
-        if( $count > 0) {
-          echo $users_email." This email is already being used";
-        }
-  			elseif ($_POST['password']!='' && $_POST['retypepass']!='' && $_POST['password']==$_POST['retypepass']) {
+//         $selct = "SELECT Email FROM user_hacku WHERE Email='$users_email'";
+//         $stmt = $conn->prepare($selct);
+//         $stmt->bind_param('s', $users_email);
+//         $result = $stmt->execute() or trigger_error($stmt->error.". Query: ".$query);
+//         //$count = $result->num_rows;
+//         
+//         $result = mysqli_query($conn,$selct);
+
+  		if ($_POST['password']!='' && $_POST['retypepass']!='' && $_POST['password']==$_POST['retypepass']) {
   				$pass = $_POST['retypepass'];
   				$hashpass = md5($pass);
-
-  			
   		
   		$sql = "INSERT INTO user_hacku (FirstName, LastName, Major, Email, Username, Password) 
   		VALUES (?, ?, ?, ?, ?, ?)";
+  		
   		$stmt = $conn->prepare($sql);
+  		//var_dump($stmt);
   		$stmt->bind_param('ssssss', $users_fname, $users_lname, $users_major, $users_email, $users_username, $hashpass);
   		$result = $stmt->execute() or trigger_error($stmt->error.". Query: ".$sql);
+  		
   		//echo $sql;
   		//$res=mysqli_query($conn, $sql);
   		//var_dump($res);
+  		
   		if($result) {
   			session_start();
   			
@@ -80,7 +68,7 @@ include("include/db.php");
   			
   			$_SESSION['user'] = $result->fetch_assoc();
          		
-         		header("Location: /");
+         		header("Location: /thesis/consent.php");
          		exit;
   		}
   		else {

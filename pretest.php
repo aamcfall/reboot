@@ -2,20 +2,40 @@
 <html lang="en">
 
 <head>
-<?php include("include/header.php"); ?>
+<?php include("include/header.html"); ?>
 	<title>Dynamic E-Learning Study </title>
-	<?php include("include/header.php"); ?>
+	 <!--<?php include("include/header.php"); ?>-->
 	<meta name="description" content="Handshake App">
+	    <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
+<link href="css/bootstrap-theme.css" rel="stylesheet" type="text/css">
+<link href="css/custom.css" rel="stylesheet" type="text/css">
+<link href="css/style.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="bower_components/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css" />
 </head>
 	<style>
 	body{
 		padding-top: 40px;
 	}
 	</style>
+	<?php
+
+
+$host = getenv('localhost');
+$username = getenv('root');
+$pass = getenv('root');
+$database = getenv('HackU');
+
+$conn = new mysqli($host, $username, $pass, $database);
+
+if ($conn->connect_errno) {
+  echo "Failed to connect to MySQL: (" . $conn->connect_errno . ") " . $conn->connect_error;
+  }
+ 
+?>
 
 <body data-spy="scroll" data-target="#my-navbar">
 
-	<?php include("include/nav.php"); ?>
+	<?php include("include/nav.html"); ?>
 
     	<!-- jumbotron-->
 
