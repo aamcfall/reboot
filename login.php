@@ -26,29 +26,39 @@ error_reporting(E_ALL);
 	session_start();
 	
 	//Variables enerted by user 
-	$users_email = $_POST['email-user'];
+	$users = $_POST['user'];
   	$users_password = $_POST['password'];
  
  	//Checks to see if variables are empty 
   	if(isset($_REQUEST['submit'])!='') {
-  		if($_POST['email-user']=='' || $_POST['password']=='' ){
-			echo "Username/email or password is empty.";
+  		if($_POST['user']=='' || $_POST['password']=='' ){
+			echo "Username or password is empty.";
   		}
   	else { 
   	  
-  		if($_POST['password']!='' && $_POST['email-user']!=''){
+  		if($_POST['password']!='' && $_POST['user']!=''){
   			$pass = $_POST['password'];
   			$hashpass = md5($pass);
-  			$users = $_POST['email-user'];
+  			$users = $_POST['user'];
+            
             
             //Checks against the database 
-  			$sql = "SELECT * FROM user_hacku WHERE (Email='$users_email') AND Password='$users_password'";
-  			$result = mysqli_query($conn,$sql);
+  			$sql = "SELECT * FROM user_hacku WHERE (Username='$users') AND Password='$hashpass'";
   			
-  			if ($result) {
+  			$result = mysqli_query($conn, $sql);
+  			
+  		 $num_rows = mysqli_num_rows($result);
+
+         echo $num_rows ;
+  			
+  			if ($num_rows ==1) {
       		
          		//session_register("users");
          		$_SESSION['user'] = $result->fetch_assoc();
+         		
+         		$_SESSION['user'] = $_POST['user'];
+         		
+         		
          		
          		header("Location: consent.php");
          		exit;

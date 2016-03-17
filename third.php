@@ -108,25 +108,50 @@ if ($conn->connect_errno) {
         <div class="modal-content">
           <div class="modal-header">
               <button type="button" class="close" data-dismiss="modal">&times;</button>
-              <h4 class="modal-title">Register</h4>
+              <h4 class="modal-title">Register <p>(data stored anonymously)</p></h4>
           </div>
           <div class="modal-body">
             <form action="registration.php" method="post">
               <div class="form-group">
                 <label for="first-name" class="control-label">First Name:</label>
                 <input type="text" class="form-control" name="first-name" id="first-name">
-                <label for="last-name" class="control-label">Last Initial: (ex: .M)</label>
-                <input type="text" class="form-control" name="last-name" id="last-name">
-                <label for="major" class="control-label">Major:</label>
+
+                <label for="major" class="control-label">Major: </label>
                 <input type="text" class="form-control" name="major" id="major">
-                <label for="email" class="control-label">Email: (optional)</label>
+                
+                     <br>
+                <div class="form-group">
+			<label for="Class" class="col-lg-4 control-label">Classification:  </label>
+		<select  name="Class">
+		     <option value=""></option>
+             <option value="1">Freshman</option>
+             <option value="2">Sophomore</option>
+             <option value="3">Junior</option>
+             <option value="4">Senior</option>
+             <option value="5">Grad Student</option>
+			</select>
+		  </div><!-- End form group -->
+                
+                <label for="email" class="control-label">NSU Email: </label>
                 <input type="text" class="form-control" name="email" id="email">
                 <label for="username" class="control-label">Username:</label>
                 <input type="text" class="form-control" name="username" id="username">
+                
+                <br>
+                <div class="form-group">
+			<label for="sex" class="col-lg-4 control-label">Gender:  </label>
+		<select  name="sex">
+		     <option value=""></option>
+             <option value="female">female</option>
+             <option value="male">male</option>
+			</select>
+		  </div><!-- End form group -->
+                
                 <label for="password" class="control-label">Password:</label>
                 <input type="password" class="form-control" name="password" id="password">
                 <label for="retypepass" class="control-label">Confirm Password:</label>
                 <input type="password" class="form-control" name="retypepass"id="retypepass">
+                
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                     <button type="submit" name="submit" value="submt" class="btn btn-primary">Submit</button>
@@ -150,11 +175,10 @@ if ($conn->connect_errno) {
                     <div class="modal-body">
                         <form action="login.php" method="post">
                             <div class="form-group">
-                                <label for="email-user" class="control-label">Email/Username:</label>
-                                <input type="text" class="form-control" name="email-user" id="email-user">
+                                <label for="user" class="control-label">Username:</label>
+                                <input type="text" class="form-control" name="user" id="user">
                                 <label for="password" class="control-label">Password:</label>
                                 <input type="password" class="form-control" name="password" id="password">
-                                <a href="#" id="forgot-pass">Forgot password?</a>
                                 <div class="modal-footer">
                                   <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                                   <button type="submit" name="submit" value="submt" class="btn btn-primary">Submit</button>
@@ -168,24 +192,20 @@ if ($conn->connect_errno) {
             </div>
     </div>
 
+<br><br>
     <div class="container jumbotron" style="background-color:transparent;">
         <div class="row" style="text-align:center; color:white"> 
-            <h1 style="text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; font-size:72px;">Dynamic E-Learning Study</h1>
+            <h2 style="text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; font-size:72px;">Registration complete please login to begin</h2>
         </div>
     </div>
 
 <span style="color:#fff; text-shadow: -2px 0 black, 0 1px black, 1px 0 black, 0 -1px black; font-size:30px;">
 
-<!-- features -->
-	<div class="container">
-		<section>
-			<div class="container text-center" >
-  				<h2>Please Register and Login to Begin</h2>
-  			</div><!-- End Page Header -->
 
-
-  			
-  			<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+   
+<br><br><br><br><br><br><br><br><br><br>
+    <div class="container jumbotron" style="background-color:transparent;">
+ 
   			
 
   <div class="container images" style="marigin: auto;">

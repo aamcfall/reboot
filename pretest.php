@@ -19,7 +19,7 @@
 	</style>
 	<?php
 
-
+session_start();
 $host = getenv('localhost');
 $username = getenv('root');
 $pass = getenv('root');
@@ -41,21 +41,12 @@ if ($conn->connect_errno) {
 
   	<div class="jumbotron">
   		<div class="container text-center">
-  			<h1> Questionair</h1>
+  			<h1> Survey</h1>
 
   		</div><!-- End container -->
   	</div>
 
-  	<!-- End jumbotron-->
 
-  	<!--
-  	<div class="container text-left">
-  			<div class="btn-group">
-  				<a href="" class="btn btn-lg btn-warning">Create Event</a>
-  			</div>
-  	-->
-
-  <!-- Contact -->
 
   <div class="container">
     <section>
@@ -64,14 +55,25 @@ if ($conn->connect_errno) {
             For each of the 11 questions below select either "a" or "b" to indicate your answer.
             Please choose only one answer for each question. If both "a" and "b" seem to apply to you,
             choose the one that applies more frequently. When you are finished selecting answers 
-            to each question please select the submit button at the end of the form.
+            to each question "click" the submit button at the bottom of the page.
             </p>
       </div><!-- End Page Header -->
 
 
+
+
+
+
+
+
+
+
+
+
+<form action="pretest_post.php" method="POST" id="pretest_post">
 <div class="form-group">
 			<label for="q1" class="col-lg-4 control-label">1. I would rather be considered</label> 
-		<select>
+		<select  name="q1">
 		     <option value=""></option>
              <option value="a">a) realistic</option>
              <option value="b">b) innovative</option>
@@ -81,7 +83,7 @@ if ($conn->connect_errno) {
 
 		 <div class="form-group">
 			<label for="q2" class="col-lg-4 control-label">2. If I were a teacher, I would rather teach a course</label>
-		<select>
+		<select name="q2">
 		     <option value=""></option>
              <option value="a">a) that deals with facts and real life situations</option>
              <option value="b">b) that deals with ideas and theories</option>
@@ -91,7 +93,7 @@ if ($conn->connect_errno) {
 
        <div class="form-group">
 			<label for="q3" class="col-lg-4 control-label">3. I find it easier</label>
-		<select>
+		<select  name="q3">
 		     <option value=""></option>
              <option value="a">a) to learn facts</option>
              <option value="b">b) to learn concepts</option>
@@ -101,7 +103,7 @@ if ($conn->connect_errno) {
 		  
 		  <div class="form-group">
 			<label for="q4" class="col-lg-4 control-label">4. In reading nonfiction, I prefer</label>
-		<select>
+		<select name="q4">
 		     <option value=""></option>
              <option value="a">a) something that teaches me new facts or tells me how to do something.  </option>
              <option value="b">b) something that gives me new ideas to think about. </option>
@@ -110,8 +112,8 @@ if ($conn->connect_errno) {
 		   <br><br>
 
   <div class="form-group">
-			<label for="q4" class="col-lg-4 control-label"> 5. I prefer the idea of </label>
-		<select>
+			<label for="q5" class="col-lg-4 control-label"> 5. I prefer the idea of </label>
+		<select name="q5">
 		     <option value=""></option>
              <option value="a">a) certainty. </option>
              <option value="b">b) theory. </option>
@@ -120,8 +122,8 @@ if ($conn->connect_errno) {
 		   <br><br>
 		  
 		    <div class="form-group">
-			<label for="q4" class="col-lg-4 control-label">6. I am more likely to be considered </label>
-		<select>
+			<label for="q6" class="col-lg-4 control-label">6. I am more likely to be considered </label>
+		<select name="q6">
 		     <option value=""></option>
              <option value="a">a) careful about the details of my work. </option>
              <option value="b">b) creative about how to do my work. </option>
@@ -130,8 +132,8 @@ if ($conn->connect_errno) {
 		   <br><br>
 
   <div class="form-group">
-			<label for="q4" class="col-lg-4 control-label">7. When I am reading for enjoyment, I like writers to </label>
-		<select>
+			<label for="q7" class="col-lg-4 control-label">7. When I am reading for enjoyment, I like writers to </label>
+		<select name="q7" >
 		     <option value=""></option>
              <option value="a">a) clearly say what they mean. </option>
              <option value="b">b) say things in creative, interesting ways.  </option>
@@ -140,8 +142,8 @@ if ($conn->connect_errno) {
 		   <br><br>
 
   <div class="form-group">
-			<label for="q4" class="col-lg-4 control-label">8. When I have to perform a task, I prefer to </label>
-		<select>
+			<label for="q8" class="col-lg-4 control-label">8. When I have to perform a task, I prefer to </label>
+		<select name="q8">
 		     <option value=""></option>
              <option value="a"> a) master one way of doing it.</option>
              <option value="b"> b) come up with new ways of doing it.</option>
@@ -150,8 +152,8 @@ if ($conn->connect_errno) {
 		   <br><br>
 
   <div class="form-group">
-			<label for="q4" class="col-lg-4 control-label">9. I consider it higher praise to call someone </label>
-		<select>
+			<label for="q9" class="col-lg-4 control-label">9. I consider it higher praise to call someone </label>
+		<select name="q9">
 		     <option value=""></option>
              <option value="a">a) sensible.</option>
              <option value="b">b) imaginative. </option>
@@ -160,8 +162,8 @@ if ($conn->connect_errno) {
 		   <br><br>
 		  
 		    <div class="form-group">
-			<label for="q4" class="col-lg-4 control-label">10. I prefer courses that emphasize</label>
-		<select>
+			<label for="q10" class="col-lg-4 control-label">10. I prefer courses that emphasize</label>
+		<select name="q10">
 		     <option value=""></option>
              <option value="a">a) concrete material (facts, data).</option>
              <option value="b">b) abstract material (concepts, theories).</option>
@@ -170,8 +172,8 @@ if ($conn->connect_errno) {
 		   <br><br>
 		  
 		    <div class="form-group">
-			<label for="q4" class="col-lg-4 control-label">11. When I am doing long calculations, </label>
-		<select>
+			<label for="q11" class="col-lg-4 control-label">11. When I am doing long calculations, </label>
+		<select name="q11">
 		     <option value=""></option>
              <option value="a">a) I tend to repeat all my steps and check my work carefully. </option>
              <option value="b">b) I find checking my work tiresome and have to force myself to do it.</option>
@@ -179,10 +181,14 @@ if ($conn->connect_errno) {
 		  </div><!-- End form group -->
 		   <br><br>
 
+
+
+
 	 <div class="form-group">
 		<div class="col-lg-10 col-lg-offset-2">
 		<div style="position:relative;left:250px;top:0px";>
-		  <button type="submit" align=left class="btn btn-success btn-lg">Submit</button>
+		
+		  <button type="submit" name="submit" value="submt" class="btn btn-success">Submit</button>
 		</div>
 		</div>
 	  </div>

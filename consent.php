@@ -18,7 +18,7 @@
 	</style>
 	<?php
 
-
+session_start();
 $host = getenv('localhost');
 $username = getenv('root');
 $pass = getenv('root');
